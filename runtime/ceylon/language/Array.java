@@ -793,7 +793,7 @@ public final class Array<Element>
 
     @Ignore
     @Override
-    public Element get(@Name("index") Integer key) {
+    public Element get(Integer key) {
         return get(toInt(key.longValue()));
     }
 

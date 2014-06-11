@@ -1,17 +1,3 @@
-function Callable(wat) {
-    return wat;
-}
-Callable.$crtmm$={mod:$CCMM$,$an:function(){return[shared()];},$tp:{Arguments$Callable:{'var':'out'},Return$Callable:{'var':'out'}},d:['$','Callable']};
-ex$.Callable=Callable;
-function $init$Callable() {
-    if (Callable.$$===undefined) {
-        initType(Callable, 'ceylon.language::Callable');
-    }
-    return Callable;
-}
-ex$.$init$Callable=$init$Callable;
-$init$Callable();
-
 function $JsCallable(callable,parms,targs) {
     if (callable.getT$all === undefined) {
         callable.getT$all=Callable.getT$all;
@@ -53,7 +39,7 @@ function JsCallableList(value) {
             var c = value[i];
             rval[i] = c.f.apply(c.o, arguments);
         }
-        return ArraySequence(rval,{Element$Iterable:{t:Callable}});
+        return value.length===0?getEmpty():ArraySequence(rval,{Element$ArraySequence:{t:Callable}});
     };
 }
 JsCallableList.$crtmm$={$tp:{Return$Callable:{'var':'out'}, Arguments$Callable:{'var':'in'}},$an:function(){return[shared()];},mod:$CCMM$,d:['$','Callable']};

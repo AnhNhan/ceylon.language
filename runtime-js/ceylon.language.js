@@ -30,8 +30,8 @@ function initTypeProtoI(type, typeName) {
   initType.apply(this, arguments);
   var args = [].slice.call(arguments, 2);
   if (type.$$.T$all['ceylon.language::Object']===undefined) {
-    type.$$.T$all['ceylon.language::Object']=Object$;
-    //args.unshift(Object$);
+    type.$$.T$all['ceylon.language::Object']=$_Object;
+    //args.unshift($_Object);
   }
   args.unshift(type);
   inheritProto.apply(this, args);
@@ -146,65 +146,31 @@ initType(Nothing, 'ceylon.language::Nothing');
 $CCMM$['ceylon.language']["Nothing"]={"$mt":"c","$an":{"shared":[]},"$nm":"Nothing"};
 Nothing.$crtmm$=function(){return{$ps:[],$an:function(){return[shared()]},mod:$CCMM$,d:['$','Nothing']};}
 
-function Object$(wat) {
-    return wat;
-}
-initTypeProto(Object$, 'ceylon.language::Object', Anything);
-Object$.$crtmm$=function(){return{'super':{t:Anything},$an:function(){return[shared(),abstract()]},mod:$CCMM$,d:['$','Object']};}
-var Object$proto = Object$.$$.prototype;
-atr$(Object$proto, 'string', function(){
-    return String$(className(this) + "@" + this.hash);
-},undefined,{$an:function(){return[shared(),$_default()]},$t:{t:String$},mod:$CCMM$,$cont:Object$,d:['$','Object','$at','string']});
-Object$proto.$prop$getHash={$fml:1,$crtmm$:function(){return{mod:$CCMM$,$cont:Object$,d:['$','Object','$at','hash'],$t:{t:Integer},$an:function(){return[shared(),formal()]}};}};
-Object$proto.toString=function() { return this.string.valueOf(); }
-Object$proto.equals={$fml:1,$crtmm$:function(){return{mod:$CCMM$,$cont:Object$,d:['$','Object','$m','equals'],$t:{t:Boolean$},
-  $ps:[{$nm:'other',$mt:'prm',$t:{t:Object$}}],$an:function(){return[shared(),formal()];}};}};
-function $init$$_Object() { return Object$; }
+//#COMPILE Object,Null,Identifiable,Callable,callables.js
 
-var $_Object=Object$;
-
-function Identifiable(obj) {}
-initType(Identifiable, "ceylon.language::Identifiable", Object$);
-Identifiable.$crtmm$=function(){return{$an:function(){return[shared()]},mod:$CCMM$,d:['$','Identifiable']};}
-function $init$Identifiable() { return Identifiable; }
-var Identifiable$proto = Identifiable.$$.prototype;
-Identifiable$proto.equals = function(that) {
-    return is$(that, {t:Identifiable}) && (that===this);
-}
-atr$(Identifiable$proto, 'hash', function(){ return identityHash(this); },
-    undefined,function(){return{$an:function(){return[shared(),$_default()]},$cont:Identifiable,mod:$CCMM$,d:['$','Identifiable','$at','hash']};});
-
-//#COMPILE Null,callable.js,collections.js,Basic,Throwable,exception_addons.js,Error,Exception,Comparison,identityHash
-//#Anything,Object
+//#COMPILE comprehensions.js,Basic,Throwable,printStackTrace,exception_addons.js,Error,Exception,Comparison,identityHash,impl/rethrow
+//#Anything
 //#COMPILE Iterable
-//#COMPILE Sequential,Sequence,Empty,StringBuilder
-//#native Array
+//#COMPILE Sequential,Sequence,Empty,StringBuilder,impl/SequenceBuilder
 //#native Boolean
 //#native Callable
-//#native SequenceBuilder
-//#native className
-//#native flatten
-//#native internalSort
-//#native language
-//#native process
 //#COMPILE Correspondence,Finished
-//#COMPILE Binary,Destroyable,Obtainable,Ranged,Iterator,Collection,Category,List,Tuple,ChainedIterator,Entry,Comparable,Invertable,Summable,Ordinal,Numeric,Exponentiable,Integral,Scalable,OverflowException,InitializationError,Resource
+//#COMPILE Binary,Destroyable,Obtainable,Ranged,Iterator,Collection,Category,List,Array,sequences.js,ArraySequence,Tuple,ChainedIterator,Entry,Comparable,Invertable,Summable,Ordinal,Numeric,Exponentiable,Integral,Scalable,OverflowException,InitializationError,Resource
 //#Number
 //#COMPILE Set,Range,Singleton,AssertionError
 //#COMPILE Map
 //#COMPILE any,byDecreasing,byIncreasing,byItem,byKey,coalesce,count,emptyOrSingleton,curry,entries,equalTo,apply
 //#COMPILE every,first,forItem,forKey,greaterThan,concatenate,largest,lessThan,max,min,smallest,sum,product,zip,unzip,mapPairs,print,nothing
-//#COMPILE identical,compose,shuffle,plus,times,sort,sequences.js,strings.js,and,or,not
+//#COMPILE identical,compose,shuffle,flatten,unflatten,plus,times,internalSort,sort,strings.js,and,or,not,arrayOfSize
 //#metamodel
 //#COMPILE Annotated,Annotation,ConstrainedAnnotation,OptionalAnnotation,SequencedAnnotation
-//#COMPILE meta/annotations,meta/metamodel,meta/optionalAnnotation,meta/sequencedAnnotations
-//#PEGAR meta/modules
+//#COMPILE meta/annotations,meta/metamodel,meta/optionalAnnotation,meta/sequencedAnnotations,modules.js,meta/modules
 //#COMPILE meta/model/ValueModel,meta/model/ClassOrInterface,ClassOrInterface_addons.js,meta/model/ClassModel,ClassModel_addons.js,meta/model/Class,meta/model/FunctionModel,FunctionModel_addons.js,meta/model/Function,meta/model/Method,meta/model/InterfaceModel,InterfaceModel_addons.js,meta/model/Interface,meta/model/IntersectionType,meta/model/Member,Member_addons.js,meta/model/MemberClass,meta/model/MemberInterface,meta/model/Attribute,meta/model/Model,meta/model/Type,meta/model/UnionType,meta/model/Value,meta/model/nothingType,meta/model/TypeApplicationException,meta/model/InvocationException,meta/model/MutationException,meta/model/IncompatibleTypeException,meta/model/Generic,meta/model/Applicable
 //#COMPILE meta/declaration/Declaration,meta/declaration/AnnotatedDeclaration,annotated_declaration.js,meta/declaration/NestableDeclaration,NestableDeclaration_addons.js,meta/declaration/GenericDeclaration,GenericDeclaration_addons.js,meta/declaration/ClassOrInterfaceDeclaration,meta/declaration/FunctionalDeclaration,declaration_addons.js,meta/declaration/FunctionOrValueDeclaration,meta/declaration/ValueDeclaration,meta/declaration/ClassDeclaration,meta/declaration/FunctionDeclaration,meta/declaration/InterfaceDeclaration,meta/declaration/ModuleAndPackage,meta/declaration/OpenIntersection,meta/declaration/OpenClassOrInterfaceType,OpenClassOrInterfaceType_addons.js,meta/declaration/OpenClassType,meta/declaration/OpenInterfaceType,meta/declaration/OpenType,meta/declaration/OpenTypeVariable,meta/declaration/OpenUnion,meta/declaration/SetterDeclaration,meta/declaration/TypeParameter,meta/declaration/TypedDeclaration,meta/declaration/nothingType,meta/declaration/AliasDeclaration,meta/declaration/Variance,meta/declaration/ModelError
 //#COMPILE annotations
-//#COMPILE numbers.js,misc1.js,functions.js,functions2.js,functions3.js,JsResource.js,modules.js,appliedtypes.js,opentypes.js,metamodel.js
+//#COMPILE numbers.js,misc1.js,functions.js,tuples.js,functions3.js,JsResource.js,appliedtypes.js,opentypes.js,metamodel.js
 //#COMPILE module,package,meta/package,meta/model/package,meta/declaration/package
-//#COMPILE process.js,parseInteger,parseFloat,formatInteger,parseBoolean
+//#COMPILE process.js,process,language,system,operatingSystem,runtime,parseInteger,parseFloat,formatInteger,parseBoolean,className
 
 function NativeException(e) {
     var that = new NativeException.$$;
@@ -221,8 +187,6 @@ function NativeException(e) {
 }
 initTypeProto(NativeException, 'ceylon.language::NativeException', $init$Exception());
 NativeException.$crtmm$=function(){return{$nm:'NativeException',$mt:'c',$ps:[{t:Exception}],$an:function(){return[shared()];},mod:$CCMM$,d:['$','Exception']};}
-ex$.Identifiable=Identifiable;
-ex$.$_Object=Object$;
 ex$.Anything=Anything;
 ex$.Nothing=Nothing;
 ex$.$_Boolean=Boolean$;
