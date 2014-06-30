@@ -1278,7 +1278,7 @@ public final class String
         return true;
     }
     
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings("rawtypes")
     @TypeInfo("ceylon.language::Tuple<ceylon.language::String,ceylon.language::String,ceylon.language::Tuple<ceylon.language::String,ceylon.language::String,ceylon.language::Empty>>")
     @Override
     public Tuple slice(@Name("index") long index) {
@@ -1840,8 +1840,13 @@ public final class String
     }
     
     @Ignore
-    public static Iterable<? extends Sequence<? extends Character>,?> getAccumulations(java.lang.String value) {
-    	return instance(value).getAccumulations();
+    public static Iterable<? extends Sequence<? extends Character>,?> accumulations(java.lang.String value, Integer length) {
+    	return instance(value).accumulations(length);
+    }
+    
+    @Ignore
+    public static Iterable<? extends Sequence<? extends Character>,?> accumulations(java.lang.String value) {
+    	return instance(value).accumulations((Integer) null);
     }
     
 }

@@ -872,7 +872,10 @@ shared interface Iterable<out Element, out Absent=Null>
          return pairs;
     }
     
-    shared default Iterable<[Element+],Absent> accumulations {
+    shared default Iterable<[Element+],Absent> accumulations(Integer? length=null) {
+        if (exists length) {
+            assert (length>=1);
+        }
         object accumulations 
                 satisfies Iterable<[Element+],Absent> {
             size => outer.size;
@@ -885,7 +888,12 @@ shared interface Iterable<out Element, out Absent=Null>
                     shared actual [Element+]|Finished next() {
                         if (!is Finished head = iter.next()) {
                             value next = LinkedSequence(head,accumulated);
-                            accumulated = next;
+                            if (exists length) {
+                                accumulated = next.measure(0, length-1);
+                            }
+                            else {
+                                accumulated = next;
+                            }
                             return next;
                         }
                         else {
