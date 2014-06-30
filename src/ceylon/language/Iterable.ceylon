@@ -1000,6 +1000,27 @@ shared interface Iterable<out Element, out Absent=Null>
         return iterable;
     }
     
+    "Allocate the elements of this stream into two sequences."
+    shared default [Element[], Element[]] allocate(
+        "The selection function that determines if an 
+         element is assigned to the first or second 
+         resulting sequence or is ignored."
+        Boolean? allocating(Element element)) {
+        variable Element[] selects = [];
+        variable Element[] rejects = [];
+        for (element in this) {
+            if (exists result = allocating(element)) {
+                if (result) {
+                    selects = LinkedSequence(element, selects);
+                }
+                else {
+                    rejects = LinkedSequence(element, rejects);
+                }
+            }
+        }
+        return [selects, rejects];
+    }
+    
    "A string of form `\"{ x, y, z }\"` where `x`, `y`, and 
      `z` are the `string` representations of the elements of 
      this collection, as produced by the iterator of the 
