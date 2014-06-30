@@ -1839,4 +1839,9 @@ public final class String
     	return instance(value).getPaired();
     }
     
+    @Ignore
+    public static Iterable<? extends Sequence<? extends Character>,?> getAccumulations(java.lang.String value) {
+    	return instance(value).getAccumulations();
+    }
+    
 }

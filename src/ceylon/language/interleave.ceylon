@@ -15,11 +15,13 @@ shared Iterable<Element,Absent>
         interleave<Element,Absent>
         (Iterable<Element,Absent>+ iterables) 
         given Absent satisfies Null {
-    object interleaved satisfies Iterable<Element,Absent> {
+    object interleaved 
+            satisfies Iterable<Element,Absent> {
         size => min { for (it in iterables) it.size } * iterables.size;
         empty => package.any { for (it in iterables) it.empty };
         shared actual Iterator<Element> iterator() {
-            object iterator satisfies Iterator<Element> {
+            object iterator 
+                    satisfies Iterator<Element> {
                 value iterators 
                         = iterables.collect((Iterable<Element> it) 
                     => it.iterator());

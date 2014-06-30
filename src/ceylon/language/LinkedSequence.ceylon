@@ -1,4 +1,4 @@
-class LinkedSequence<Element>(first, rest)
+shared class LinkedSequence<Element>(first, rest)
         extends Object()
         satisfies Sequence<Element> {
     

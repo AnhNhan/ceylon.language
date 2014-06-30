@@ -872,6 +872,33 @@ shared interface Iterable<out Element, out Absent=Null>
          return pairs;
     }
     
+    shared default Iterable<[Element+],Absent> accumulations {
+        object accumulations 
+                satisfies Iterable<[Element+],Absent> {
+            size => outer.size;
+            empty => outer.empty;
+            shared actual Iterator<[Element+]> iterator() {
+                value iter = outer.iterator();
+                object iterator 
+                        satisfies Iterator<[Element+]> {
+                    variable Element[] accumulated = [];
+                    shared actual [Element+]|Finished next() {
+                        if (!is Finished head = iter.next()) {
+                            value next = LinkedSequence(head,accumulated);
+                            accumulated = next;
+                            return next;
+                        }
+                        else {
+                            return finished;
+                        }
+                    }
+                }
+                return iterator;
+            }
+        }
+        return accumulations;
+    }
+    
     "Produces a stream of sequences of the given [[length]],
      containing elements of this stream. Each sequence in 
      the stream contains the next [[length]] elements of 
