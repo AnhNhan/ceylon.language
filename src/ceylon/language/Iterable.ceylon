@@ -1005,16 +1005,18 @@ shared interface Iterable<out Element, out Absent=Null>
         "The selection function that determines if an 
          element is assigned to the first or second 
          resulting sequence or is ignored."
-        Boolean? allocating(Element element)) {
+        Boolean? allocating(Element&Object element)) {
         variable Element[] selects = [];
         variable Element[] rejects = [];
         for (element in this) {
-            if (exists result = allocating(element)) {
-                if (result) {
-                    selects = LinkedSequence(element, selects);
-                }
-                else {
-                    rejects = LinkedSequence(element, rejects);
+            if (exists element) {
+                if (exists result = allocating(element)) {
+                    if (result) {
+                        selects = LinkedSequence(element, selects);
+                    }
+                    else {
+                        rejects = LinkedSequence(element, rejects);
+                    }
                 }
             }
         }
