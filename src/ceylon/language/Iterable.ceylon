@@ -392,7 +392,7 @@ shared interface Iterable<out Element, out Absent=Null>
     
     "The first element of this stream which satisfies the 
      [[given predicate function|selecting]], if any, or 
-     `null` otherwise.  For an infinite stream, this 
+     `null` otherwise. For an infinite stream, this 
      operation might not terminate."
     shared default Element? find(
             "The predicate the element must satisfy."
