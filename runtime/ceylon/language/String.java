@@ -1856,8 +1856,8 @@ public final class String
     }
     
     @Ignore
-    public static Iterable<? extends Sequential<? extends Character>,?> sequences(java.lang.String value, long length) {
-    	return instance(value).sequences(length);
+    public static Iterable<? extends Sequential<? extends Character>,?> partition(java.lang.String value, long length) {
+    	return instance(value).partition(length);
     }
     
 }
